@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ALCARRELLAGE · Carreleur à Angers</title>
+<meta name="description" content="ALCARRELLAGE, pose de carrelage neuf et rénovation, sols et murs, à Angers.">
+<meta name="theme-color" content="#B5522E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2064%2064%27%3E%3Crect%20width%3D%2764%27%20height%3D%2764%27%20rx%3D%2710%27%20fill%3D%27%23B5522E%27/%3E%3Cpath%20d%3D%27M6%206h25v25H6zM33%206h25v25H33zM6%2033h25v25H6z%27%20fill%3D%27%23F4EEE6%27/%3E%3Cpath%20d%3D%27M33%2033h25v25H33z%27%20fill%3D%27%232C2A28%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:80px}
+body{margin:0;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%}
+img{height:auto}
+a{color:inherit}
+button,input,select,textarea{font:inherit}
+.icone{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* ---------- Bandeau démo MJ ---------- */
+.bandeau-demo{background:#0F5C6E;color:#fff;font:500 14px/1.35 system-ui,-apple-system,"Segoe UI",sans-serif;
+  display:flex;gap:10px 16px;align-items:center;justify-content:center;flex-wrap:wrap;padding:9px 16px;text-align:center}
+.bandeau-demo strong{font-weight:700}
+.bandeau-demo a{color:#FFD3A8;font-weight:700;text-decoration:none;white-space:nowrap}
+.bouton-pourquoi{background:#F28C28;color:#1b1b1b;border:0;border-radius:999px;padding:7px 14px;font:700 13px system-ui,sans-serif;cursor:pointer;white-space:nowrap}
+.bouton-pourquoi:focus-visible{outline:3px solid #fff;outline-offset:2px}
+body.mode-presentation .bouton-pourquoi{background:#fff}
+@media (max-width:600px){.bandeau-demo{font-size:12.5px;padding:8px 12px}.bandeau-demo .cache-mobile{display:none}}
+
+/* ---------- Bulles d'arguments (mode présentation) ---------- */
+.argument{display:none;position:relative;z-index:5;max-width:560px;margin:18px 0 0;padding:14px 16px 14px 46px;
+  background:#FFF7EE;color:#2a2a2a;border:2px solid #F28C28;border-radius:14px;text-align:left;
+  font:400 15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;box-shadow:0 6px 18px rgba(0,0,0,.12)}
+.argument::before{content:"MJ";position:absolute;left:10px;top:12px;width:26px;height:26px;border-radius:50%;
+  background:#0F5C6E;color:#fff;font:800 10px/26px system-ui,sans-serif;text-align:center}
+.argument b{color:#0F5C6E}
+body.mode-presentation .argument{display:block;animation:apparait .35s ease}
+@keyframes apparait{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* ---------- Infos à compléter ---------- */
+.a-completer{font-style:italic;opacity:.7}
+.etiquette-completer{display:inline-block;font:600 10.5px/1 system-ui,sans-serif;letter-spacing:.06em;
+  text-transform:uppercase;border:1px solid currentColor;opacity:.6;padding:3px 6px;border-radius:4px;vertical-align:middle}
+
+/* ---------- Dessins en trait fin ---------- */
+.section-dessinee{position:relative;isolation:isolate}
+.dessin{position:absolute;z-index:-1;fill:none;stroke-width:1.4;opacity:.4;pointer-events:none}
+.dessin *{vector-effect:non-scaling-stroke}
+@media (max-width:600px){.cache-mobile{display:none}}
+
+/* ---------- En-tête collant + navigation ---------- */
+.entete{position:sticky;top:0;z-index:40;backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px)}
+.nav-principale{display:flex;gap:28px;font:500 15px var(--police-texte)}
+.nav-principale a{text-decoration:none;opacity:.78;transition:opacity .2s}
+.nav-principale a:hover{opacity:1}
+.entete-droite{display:flex;align-items:center;gap:18px}
+.tel-entete{display:flex;flex-direction:column;align-items:flex-end;line-height:1.15;text-decoration:none;font:600 15px var(--police-texte)}
+.tel-entete small{font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.65;font-weight:500}
+@media (max-width:1060px){.nav-principale{display:none}}
+@media (max-width:760px){.tel-entete{display:none}}
+
+/* ---------- Apparition au défilement ---------- */
+.js .revele{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.js .revele.vu{opacity:1;transform:none}
+
+/* ---------- Barre de confiance ---------- */
+.confiance{position:relative;z-index:3;margin-top:-38px}
+.confiance-grille{display:grid;grid-template-columns:repeat(4,1fr);background:var(--theme-carte);color:var(--theme-texte);
+  border-radius:var(--theme-rayon);box-shadow:0 24px 50px -28px rgba(0,0,0,.45);border:1px solid var(--theme-trait);overflow:hidden}
+.confiance-item{display:flex;gap:14px;align-items:flex-start;padding:22px 22px}
+.confiance-item+.confiance-item{border-left:1px solid var(--theme-trait)}
+.confiance-item .icone{width:30px;height:30px;color:var(--theme-accent-icone,var(--theme-accent))}
+.confiance-item strong{display:block;font:700 16px/1.25 var(--police-titre)}
+.confiance-item span{display:block;font:400 14px/1.4 var(--police-texte);color:var(--theme-doux);margin-top:3px}
+@media (max-width:960px){.confiance-grille{grid-template-columns:1fr 1fr}.confiance-item:nth-child(3){border-left:0}
+  .confiance-item:nth-child(n+3){border-top:1px solid var(--theme-trait)}}
+@media (max-width:600px){.confiance{margin-top:-24px}.confiance-item{padding:16px 14px;gap:10px}.confiance-item .icone{width:24px;height:24px}
+  .confiance-item strong{font-size:14.5px}.confiance-item span{font-size:13px}}
+
+/* ---------- FAQ ---------- */
+.faq{padding:88px 0;background:var(--theme-fond);color:var(--theme-texte)}
+.faq .conteneur{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:start}
+.faq h2{font-family:var(--police-titre)}
+.faq-liste details{border-bottom:1px solid var(--theme-trait)}
+.faq-liste details:first-child{border-top:1px solid var(--theme-trait)}
+.faq-liste summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:18px;align-items:center;
+  padding:20px 2px;font:600 18px/1.35 var(--police-titre)}
+.faq-liste summary::-webkit-details-marker{display:none}
+.faq-liste summary::after{content:"";width:12px;height:12px;flex:none;border-right:2px solid currentColor;border-bottom:2px solid currentColor;
+  transform:rotate(45deg) translateY(-3px);transition:transform .25s;opacity:.6}
+.faq-liste details[open] summary::after{transform:rotate(-135deg)}
+.faq-liste details p{margin:0 0 22px;color:var(--theme-doux);font:400 16.5px/1.65 var(--police-texte);max-width:60ch}
+@media (max-width:960px){.faq .conteneur{grid-template-columns:1fr;gap:20px}}
+
+/* ---------- Devis / contact ---------- */
+.devis{padding:92px 0;background:var(--theme-sombre);color:var(--theme-sur-sombre)}
+.devis .conteneur{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.devis h2{font-family:var(--police-titre);color:var(--theme-sur-sombre)}
+.devis .intro{opacity:.82;max-width:34em;margin:16px 0 28px;font-size:18px}
+.coordonnees{display:grid;gap:4px;margin:0 0 26px;padding:0;list-style:none}
+.coordonnees li{display:flex;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.12);font:500 16px var(--police-texte)}
+.coordonnees .icone{color:var(--theme-accent-icone-sombre,var(--theme-accent))}
+.coordonnees .a-completer{display:inline-block;margin-top:6px}
+.coordonnees small{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;opacity:.6}
+.formulaire{background:var(--theme-carte);color:var(--theme-texte);border-radius:var(--theme-rayon);padding:32px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.formulaire h3{font:700 22px/1.2 var(--police-titre);margin:0 0 4px}
+.formulaire .sous-titre{margin:0 0 22px;color:var(--theme-doux);font-size:15px}
+.formulaire-grille{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.formulaire label{display:grid;gap:6px;font:600 14px var(--police-texte)}
+.formulaire .pleine{grid-column:1/-1}
+.formulaire input,.formulaire select,.formulaire textarea{width:100%;padding:13px 14px;border:1.5px solid var(--theme-trait);border-radius:calc(var(--theme-rayon)*.5);
+  background:var(--theme-champ,#fff);color:var(--theme-texte);font:400 16px var(--police-texte)}
+.formulaire textarea{min-height:110px;resize:vertical}
+.formulaire input:focus,.formulaire select:focus,.formulaire textarea:focus{outline:none;border-color:var(--theme-accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--theme-accent) 22%,transparent)}
+.bouton-envoyer{margin-top:18px;width:100%;justify-content:center;border:0;cursor:pointer;padding:16px 22px;border-radius:calc(var(--theme-rayon)*.5);
+  background:var(--theme-accent);color:var(--theme-sur-accent);font:700 17px var(--police-texte);display:flex;gap:10px;align-items:center}
+.bouton-envoyer:hover{filter:brightness(1.06)}
+.mention-form{font-size:12.5px;color:var(--theme-doux);margin:12px 0 0}
+.confirmation{display:none;text-align:center;padding:30px 10px}
+.confirmation .coche{width:64px;height:64px;border-radius:50%;margin:0 auto 16px;display:grid;place-items:center;background:var(--theme-accent);color:var(--theme-sur-accent);font-size:30px}
+.formulaire.envoye form{display:none}.formulaire.envoye .confirmation{display:block}
+@media (max-width:960px){.devis .conteneur{grid-template-columns:1fr;gap:34px}}
+@media (max-width:600px){.formulaire{padding:22px}.formulaire-grille{grid-template-columns:1fr}}
+
+/* ---------- Pied de page complet ---------- */
+.pied{background:var(--theme-sombre);color:var(--theme-sur-sombre);border-top:1px solid rgba(255,255,255,.1);padding:56px 0 0;font:400 15px/1.6 var(--police-texte)}
+.pied-grille{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+.pied h4{font:600 12px/1 var(--police-texte);letter-spacing:.16em;text-transform:uppercase;opacity:.55;margin:0 0 16px}
+.pied ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.pied a{text-decoration:none;opacity:.85}.pied a:hover{opacity:1}
+.pied .nom-pied{font:700 22px/1.1 var(--police-titre);margin:0 0 10px}
+.pied p{margin:0;opacity:.7;max-width:30em}
+.pied-bas{margin-top:44px;padding:18px 0 26px;border-top:1px solid rgba(255,255,255,.1);display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-between;font-size:13px;opacity:.65}
+.pied-bas a{font-weight:600}
+@media (max-width:760px){.pied-grille{grid-template-columns:1fr;gap:28px}}
+
+/* ---------- Encart offre MJ (démo) ---------- */
+.offre-mj{background:#0B3F4C;color:#fff;padding:72px 0;font:400 17px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;position:relative;overflow:hidden}
+.offre-mj::before{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(242,140,40,.28),transparent 65%)}
+.offre-mj .conteneur-mj{width:min(1100px,100% - 32px);margin-inline:auto;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;position:relative}
+.offre-mj .etiquette{display:inline-block;background:#F28C28;color:#1b1b1b;font:800 12px/1 system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;padding:7px 10px;border-radius:999px}
+.offre-mj h2{text-transform:none;font-stretch:normal;color:#fff;font:800 clamp(28px,3.8vw,42px)/1.1 system-ui,-apple-system,"Segoe UI",sans-serif;margin:16px 0 14px;letter-spacing:-.01em}
+.offre-mj p{margin:0 0 12px;color:#cfe3e8}
+.offre-mj .inclus{list-style:none;margin:0;padding:24px;display:grid;gap:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:18px}
+.offre-mj .inclus li{display:flex;gap:12px;align-items:flex-start}
+.offre-mj .inclus li::before{content:"✓";flex:none;width:24px;height:24px;border-radius:50%;background:#F28C28;color:#1b1b1b;font:800 13px/24px system-ui;text-align:center}
+.offre-mj .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.offre-mj .actions a{display:inline-flex;gap:8px;align-items:center;text-decoration:none;font:700 16px system-ui,sans-serif;padding:14px 20px;border-radius:999px}
+.offre-mj .actions .principal{background:#F28C28;color:#1b1b1b}
+.offre-mj .actions .secondaire{border:2px solid rgba(255,255,255,.35);color:#fff}
+.offre-mj .signature{display:flex;gap:12px;align-items:center;margin-top:22px;font-size:14px;color:#cfe3e8}
+.offre-mj .signature span:first-child{width:40px;height:40px;border-radius:50%;background:#0F5C6E;border:2px solid #F28C28;display:grid;place-items:center;font:800 13px system-ui;color:#fff}
+.offre-mj .conteneur-mj>*{min-width:0}
+@media (max-width:860px){.offre-mj .conteneur-mj{grid-template-columns:1fr;gap:28px}}
+
+/* ---------- Barre d'appel mobile ---------- */
+.barre-mobile{display:none}
+@media (max-width:600px){
+  body{padding-bottom:72px}
+  .barre-mobile{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+    background:var(--theme-carte);border-top:1px solid var(--theme-trait);box-shadow:0 -10px 30px -12px rgba(0,0,0,.35)}
+  .barre-mobile a{display:flex;gap:8px;justify-content:center;align-items:center;text-decoration:none;font:700 15px var(--police-texte);padding:13px;border-radius:calc(var(--theme-rayon)*.5)}
+  .barre-mobile .appel{background:var(--theme-accent);color:var(--theme-sur-accent)}
+  .barre-mobile .devis-lien{background:var(--theme-sombre);color:var(--theme-sur-sombre)}
+  .barre-mobile .icone{width:18px;height:18px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.js .revele{opacity:1;transform:none}}
+
+
+:root{--theme-fond:#fff;--theme-carte:#fff;--theme-texte:#2C2A28;--theme-doux:#625a52;--theme-accent:#B5522E;--theme-sur-accent:#fff;
+  --theme-sombre:#2C2A28;--theme-sur-sombre:#F4EEE6;--theme-trait:#E6DDD1;--theme-rayon:6px;--theme-accent-icone-sombre:#E9A07F}
+.devis .surtitre{color:#E9A07F}
+.faq h2{text-transform:uppercase}
+:root{
+  --chaux:#F4EEE6; --chaux-fonce:#E6DDD1; --terre:#B5522E; --terre-fonce:#8E3D1F;
+  --joint:#2C2A28; --gris-ciment:#8A847C; --vert-zellige:#2F6B5E;
+  --police-titre:"Archivo",system-ui,sans-serif; --police-texte:"Work Sans",system-ui,sans-serif;
+}
+body{background:var(--chaux);color:var(--joint);font:400 17px/1.6 var(--police-texte)}
+.conteneur{width:min(1120px,100% - 32px);margin-inline:auto}
+h1,h2,h3{font-family:var(--police-titre);line-height:1.05;margin:0}
+h2{font-size:clamp(30px,4.4vw,48px);font-weight:800;font-stretch:80%;text-transform:uppercase;letter-spacing:-.01em}
+.surtitre{font:600 13px/1 var(--police-texte);letter-spacing:.14em;text-transform:uppercase;color:var(--terre);margin:0 0 12px}
+
+/* En-tête */
+.entete{background:rgba(244,238,230,.92);border-bottom:1px solid var(--chaux-fonce)}
+.entete .conteneur{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+.marque{display:flex;align-items:center;gap:10px;text-decoration:none}
+.marque svg{width:38px;height:38px;flex:none}
+.marque span{font:800 22px/1 var(--police-titre);font-stretch:85%;letter-spacing:.02em}
+.marque span b{color:var(--terre)}
+.bouton{display:inline-flex;align-items:center;gap:8px;font:700 16px/1 var(--police-texte);text-decoration:none;
+  padding:14px 20px;border-radius:4px;border:2px solid var(--joint);background:var(--joint);color:var(--chaux);cursor:pointer}
+.bouton.clair{background:transparent;color:var(--joint)}
+.bouton:hover{background:var(--terre);border-color:var(--terre);color:#fff}
+.entete .bouton{padding:11px 16px}
+
+/* Accueil : carrelage qui se pose */
+.accueil{padding:56px 0 104px}
+.accueil .conteneur{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.accueil h1{font-size:clamp(40px,6.6vw,80px);font-weight:900;font-stretch:75%;text-transform:uppercase;letter-spacing:-.015em}
+.accueil h1 em{font-style:normal;color:var(--terre)}
+.accueil p.chapo{font-size:19px;max-width:30em;margin:20px 0 28px}
+.boutons{display:flex;gap:12px;flex-wrap:wrap}
+.plateau{aspect-ratio:1;display:grid;grid-template-columns:repeat(6,1fr);gap:5px;padding:5px;background:var(--gris-ciment);
+  border-radius:6px;box-shadow:0 30px 60px -30px rgba(44,42,40,.55);transform:rotate(-2deg)}
+.carreau{border-radius:2px;background:var(--chaux);opacity:0;transform:translateY(-14px) scale(.96);
+  animation:pose .5s cubic-bezier(.2,.8,.2,1) forwards}
+.carreau.t{background:var(--terre)} .carreau.f{background:var(--joint)} .carreau.v{background:var(--vert-zellige)}
+.carreau.motif{background:conic-gradient(from 45deg,var(--terre) 0 25%,var(--chaux) 0 50%,var(--terre) 0 75%,var(--chaux) 0)}
+@keyframes pose{to{opacity:1;transform:none}}
+.zone{display:flex;gap:18px;flex-wrap:wrap;margin-top:26px;font-size:15px;color:#5a544d}
+.zone span::before{content:"";display:inline-block;width:10px;height:10px;background:var(--terre);margin-right:8px;transform:rotate(45deg)}
+
+/* Prestations */
+.prestations{background:#fff;padding:72px 0;border-block:6px solid var(--joint)}
+.grille-prestations{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:34px;border:1px solid var(--chaux-fonce)}
+.prestation{padding:28px 26px;border:1px solid var(--chaux-fonce)}
+.prestation .numero{font:800 15px var(--police-titre);color:var(--terre)}
+.prestation h3{font-size:24px;font-weight:800;margin:10px 0 10px}
+.prestation p{margin:0;color:#4d4842}
+
+/* Avant / après */
+.avant-apres{padding:76px 0}
+.avant-apres .conteneur{display:grid;grid-template-columns:.8fr 1.2fr;gap:44px;align-items:center}
+.comparateur{position:relative;aspect-ratio:4/3;border-radius:6px;overflow:hidden;user-select:none;touch-action:pan-y;
+  box-shadow:0 20px 40px -24px rgba(0,0,0,.5);--coupe:50%}
+.comparateur svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.comparateur .apres{clip-path:inset(0 0 0 var(--coupe))}
+.poignee{position:absolute;top:0;bottom:0;left:var(--coupe);width:3px;background:#fff;transform:translateX(-50%);pointer-events:none}
+.poignee::after{content:"⟷";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;
+  background:#fff;color:var(--joint);display:grid;place-items:center;font:700 20px/1 system-ui;box-shadow:0 2px 10px rgba(0,0,0,.3)}
+.comparateur input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.etiquettes{position:absolute;inset:auto 12px 12px;display:flex;justify-content:space-between;pointer-events:none}
+.etiquettes span{background:rgba(44,42,40,.85);color:#fff;font:700 12px var(--police-texte);letter-spacing:.1em;text-transform:uppercase;padding:6px 10px;border-radius:3px}
+.note-photo{font-size:14px;color:#6b645c;margin-top:12px}
+
+/* Calculateur */
+.calcul{background:var(--joint);color:var(--chaux);padding:76px 0}
+.calcul .surtitre{color:#E9A07F}
+.calcul .conteneur{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+.formulaire-calcul{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.formulaire-calcul label{display:grid;gap:6px;font-weight:600;font-size:15px}
+.formulaire-calcul input,.formulaire-calcul select{font:500 17px var(--police-texte);padding:12px;border-radius:4px;border:2px solid #4a4642;background:#3a3734;color:#fff;width:100%}
+.formulaire-calcul input:focus,.formulaire-calcul select:focus{outline:none;border-color:#E9A07F}
+.pleine{grid-column:1/-1}
+.resultat{border:2px dashed #6a645d;border-radius:6px;padding:26px}
+.resultat .gros{font:900 clamp(46px,7vw,72px)/1 var(--police-titre);font-stretch:75%;color:#E9A07F}
+.resultat p{margin:8px 0 0;color:#d6cec4}
+.resultat small{display:block;margin-top:16px;color:#a69e94;font-size:14px}
+
+/* Déroulé */
+.deroule{padding:76px 0}
+.etapes{list-style:none;padding:0;margin:34px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:etape}
+.etapes li{background:#fff;border-left:6px solid var(--terre);padding:22px;counter-increment:etape}
+.etapes li::before{content:counter(etape);font:900 40px/1 var(--police-titre);color:var(--chaux-fonce)}
+.etapes h3{font-size:21px;margin:6px 0 6px}
+.etapes p{margin:0;color:#4d4842;font-size:16px}
+
+/* Contact */
+.contact{background:var(--terre);color:#fff;padding:72px 0}
+.contact .conteneur{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+.contact h2{color:#fff}
+.carte-contact{background:var(--chaux);color:var(--joint);border-radius:6px;padding:26px;display:grid;gap:14px}
+.carte-contact .ligne{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.carte-contact .ligne b{min-width:88px;font-size:14px;text-transform:uppercase;letter-spacing:.08em;color:var(--terre)}
+.contact .bouton{background:var(--joint);border-color:var(--joint)}
+.contact .argument{color:#2a2a2a}
+.pied-mj{background:var(--joint);color:var(--chaux)}
+
+.dessin{stroke:var(--terre)}
+.calcul .dessin{stroke:#E9A07F;opacity:.25}
+
+@media (max-width:960px){
+  .accueil .conteneur,.avant-apres .conteneur,.calcul .conteneur,.contact .conteneur{grid-template-columns:1fr}
+  .grille-prestations{grid-template-columns:1fr}
+  .etapes{grid-template-columns:1fr}
+  .plateau{width:100%;max-width:420px;margin-inline:auto}
+}
+@media (max-width:600px){
+  .accueil{padding:36px 0 70px}
+  .formulaire-calcul{grid-template-columns:1fr}
+  .marque span{font-size:19px}
+}
+</style>
+</head>
+<body>
+<div class="bandeau-demo" role="note">
+  <span>Maquette préparée pour <strong>ALCARRELLAGE</strong> par MJ Solution Informatique<span class="cache-mobile">. Pas encore en ligne</span>.</span>
+  <a href="tel:+33761818353">Ce site vous plaît ? 07 61 81 83 53</a>
+  <button class="bouton-pourquoi" type="button" aria-pressed="false">Pourquoi ce site ?</button>
+</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="dessin-truelle" viewBox="0 0 100 60"><path d="M5 40 L60 10 L95 30 L40 58 Z"/><path d="M60 10 L70 2 M70 2 h14"/><path d="M20 44 l40 -22"/></symbol>
+  <symbol id="dessin-niveau" viewBox="0 0 120 30"><rect x="2" y="6" width="116" height="18" rx="3"/><rect x="52" y="10" width="16" height="10" rx="4"/><circle cx="60" cy="15" r="2.5"/><path d="M14 6v6M26 6v4M38 6v6M82 6v6M94 6v4M106 6v6"/></symbol>
+  <symbol id="dessin-croisillon" viewBox="0 0 40 40"><path d="M16 2h8v14h14v8H24v14h-8V24H2v-8h14z"/></symbol>
+  <symbol id="dessin-peigne" viewBox="0 0 100 50"><path d="M5 10h90v18H5z"/><path d="M10 28l5 8 5-8 5 8 5-8 5 8 5-8 5 8 5-8 5 8 5-8 5 8 5-8 5 8 5-8 5 8 5-8"/><path d="M40 10V2h20v8"/></symbol>
+</svg>
+
+<header class="entete">
+  <div class="conteneur">
+    <a class="marque" href="#haut" aria-label="ALCARRELLAGE, accueil">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="6" fill="#B5522E"/><path d="M6 6h25v25H6zM33 6h25v25H33zM6 33h25v25H6z" fill="#F4EEE6"/><path d="M33 33h25v25H33z" fill="#2C2A28"/></svg>
+      <span>AL<b>CARRELLAGE</b></span>
+    </a>
+    <nav class="nav-principale" aria-label="Menu"><a href="#prestations">Prestations</a><a href="#realisations">Réalisations</a><a href="#calcul">Calculateur</a><a href="#faq">Questions</a><a href="#contact">Contact</a></nav>
+    <div class="entete-droite"><a class="tel-entete" href="#contact"><small>Appel direct</small><span>Votre numéro ici</span></a>
+    <a class="bouton" href="#contact"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg> <span class="texte-long">Appeler</span></a></div>
+  </div>
+</header>
+
+<main id="haut">
+<section class="accueil section-dessinee">
+  <svg class="dessin cache-mobile" style="width:130px;top:24px;right:46%"><use href="#dessin-croisillon"/></svg>
+  <div class="conteneur">
+    <div>
+      <p class="surtitre">Carreleur à Angers</p>
+      <h1>Pose de carrelage, <em>neuf</em> et <em>rénovation</em></h1>
+      <p class="chapo">Sols et murs, d'une salle de bain entière à une entrée de quelques mètres carrés. Je travaille seul : c'est moi qui viens voir, moi qui chiffre, moi qui pose.</p>
+      <div class="boutons">
+        <a class="bouton" href="#formulaire-devis">Demander un devis</a>
+        <a class="bouton clair" href="#calcul">Calculer ma surface</a>
+      </div>
+      <div class="zone"><span>Angers et alentours</span><span>Sols et murs</span><span>Neuf et rénovation</span></div>
+      <div class="argument"><b>Le haut de page, c'est ce que voit le client qui vous a trouvé sur Google.</b> En deux secondes il sait ce que vous faites, où vous travaillez, et il a le bouton pour vous appeler. Aujourd'hui, quand on tape votre nom, il n'y a rien.</div>
+    </div>
+    <div class="plateau" aria-hidden="true"><span class="carreau t" style="animation-delay:150ms"></span><span class="carreau t" style="animation-delay:220ms"></span><span class="carreau " style="animation-delay:290ms"></span><span class="carreau " style="animation-delay:360ms"></span><span class="carreau t" style="animation-delay:430ms"></span><span class="carreau t" style="animation-delay:500ms"></span><span class="carreau t" style="animation-delay:220ms"></span><span class="carreau motif" style="animation-delay:290ms"></span><span class="carreau " style="animation-delay:360ms"></span><span class="carreau " style="animation-delay:430ms"></span><span class="carreau motif" style="animation-delay:500ms"></span><span class="carreau t" style="animation-delay:570ms"></span><span class="carreau " style="animation-delay:290ms"></span><span class="carreau v" style="animation-delay:360ms"></span><span class="carreau f" style="animation-delay:430ms"></span><span class="carreau f" style="animation-delay:500ms"></span><span class="carreau v" style="animation-delay:570ms"></span><span class="carreau " style="animation-delay:640ms"></span><span class="carreau " style="animation-delay:360ms"></span><span class="carreau v" style="animation-delay:430ms"></span><span class="carreau f" style="animation-delay:500ms"></span><span class="carreau f" style="animation-delay:570ms"></span><span class="carreau v" style="animation-delay:640ms"></span><span class="carreau " style="animation-delay:710ms"></span><span class="carreau t" style="animation-delay:430ms"></span><span class="carreau motif" style="animation-delay:500ms"></span><span class="carreau " style="animation-delay:570ms"></span><span class="carreau " style="animation-delay:640ms"></span><span class="carreau motif" style="animation-delay:710ms"></span><span class="carreau t" style="animation-delay:780ms"></span><span class="carreau t" style="animation-delay:500ms"></span><span class="carreau t" style="animation-delay:570ms"></span><span class="carreau " style="animation-delay:640ms"></span><span class="carreau " style="animation-delay:710ms"></span><span class="carreau t" style="animation-delay:780ms"></span><span class="carreau t" style="animation-delay:850ms"></span></div>
+  </div>
+</section>
+<section class="confiance" aria-label="En bref"><div class="conteneur"><div class="confiance-grille revele"><div class="confiance-item"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 2.2 3.2-.4.7 3.2 2.8 1.6-1.4 2.9 1.4 2.9-2.8 1.6-.7 3.2-3.2-.4L12 21l-2.4-2.2-3.2.4-.7-3.2-2.8-1.6L4.3 11.5 2.9 8.6l2.8-1.6.7-3.2 3.2.4z"/><path d="m8.5 11.5 2.3 2.3 4.7-4.7"/></svg><div><strong>Artisan immatriculé</strong><span>Inscrit au registre national des entreprises</span></div></div><div class="confiance-item"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4.5 4.5-7 8-7s7 2.5 8 7"/></svg><div><strong>Un seul interlocuteur</strong><span>De la visite à la dernière coupe</span></div></div><div class="confiance-item"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 12h6M10 16h6"/></svg><div><strong>Devis détaillé</strong><span>Envoyé avant tout démarrage</span></div></div><div class="confiance-item"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><div><strong>Angers et alentours</strong><span>Je me déplace chez vous</span></div></div></div></div></section>
+
+
+<section class="prestations section-dessinee" id="prestations">
+  <svg class="dessin cache-mobile" style="width:180px;top:30px;right:20px"><use href="#dessin-niveau"/></svg>
+  <div class="conteneur">
+    <p class="surtitre">Ce que je fais</p>
+    <h2>Trois types de chantiers</h2>
+    <div class="grille-prestations">
+      <article class="prestation"><span class="numero">01</span><h3>Construction neuve</h3><p>Maison, extension, garage aménagé. Le carrelage est posé sur dalle avant l'arrivée des meubles, avec plinthes assorties.</p></article>
+      <article class="prestation"><span class="numero">02</span><h3>Rénovation</h3><p>Un vieux carrelage fissuré ou démodé à remplacer. On regarde ensemble s'il faut tout déposer ou s'il est possible de poser par-dessus.</p></article>
+      <article class="prestation"><span class="numero">03</span><h3>Murs et faïence</h3><p>Salle de bain, douche à l'italienne, crédence de cuisine. Les découpes autour des prises et des robinets sont faites sur place.</p></article>
+    </div>
+    <div class="argument"><b>Chaque prestation a son paragraphe.</b> Quand quelqu'un cherche « carreleur salle de bain Angers », Google peut tomber sur cette page. On ajustera la liste avec ce que vous faites vraiment (terrasse, ragréage, etc.).</div>
+  </div>
+</section>
+
+<section class="avant-apres section-dessinee" id="realisations">
+  <svg class="dessin cache-mobile" style="width:120px;bottom:30px;left:20px"><use href="#dessin-truelle"/></svg>
+  <div class="conteneur">
+    <div>
+      <p class="surtitre">Réalisations</p>
+      <h2>Avant, après</h2>
+      <p>Faites glisser la barre pour comparer. Un vieux sol beige fissuré, remplacé par un grand format gris et une faïence claire au mur.</p>
+      <p class="note-photo"><span class="etiquette-completer">Exemple</span> Ici iront les vraies photos de vos chantiers.</p>
+      <div class="argument"><b>Le avant/après, c'est ce qui fait signer.</b> Sur les réseaux, les photos se noient dans le fil. Ici, le client voit en un geste la différence que vous apportez. Vous nous envoyez deux photos par chantier, on s'occupe du reste.</div>
+    </div>
+    <div class="comparateur" id="comparateur">
+      <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<defs><pattern id="vieux" width="50" height="50" patternUnits="userSpaceOnUse">
+<rect width="50" height="50" fill="#C9B79A"/><rect x="1.5" y="1.5" width="47" height="47" fill="#D8C7A8"/>
+<path d="M10 40l12-14 9 4" stroke="#9c8a6c" stroke-width="1.2" fill="none"/></pattern></defs>
+<rect width="400" height="300" fill="#ddd2c0"/>
+<rect y="150" width="400" height="150" fill="url(#vieux)"/>
+<rect x="0" y="0" width="400" height="150" fill="#E8DFCF"/>
+<path d="M0 150h400" stroke="#8f826f" stroke-width="3"/>
+<rect x="250" y="70" width="90" height="80" fill="#f4f1ea" stroke="#b6aa95" stroke-width="2"/>
+<path d="M120 200l30 25 -8 30M230 260l40-22 18 12" stroke="#7d6b50" stroke-width="2" fill="none"/>
+<rect x="60" y="230" width="34" height="22" fill="#a8946f" opacity=".5"/>
+</svg>
+      <svg class="apres" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<defs><pattern id="neuf" width="120" height="60" patternUnits="userSpaceOnUse">
+<rect width="120" height="60" fill="#5d5955"/><rect x="1" y="1" width="118" height="58" fill="#8b867f"/>
+<rect x="1" y="1" width="118" height="58" fill="url(#reflet)"/></pattern>
+<linearGradient id="reflet" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".18"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<pattern id="faience" width="40" height="20" patternUnits="userSpaceOnUse">
+<rect width="40" height="20" fill="#e4e0d8"/><rect x=".8" y=".8" width="38.4" height="18.4" fill="#F7F5F0"/></pattern></defs>
+<rect width="400" height="150" fill="url(#faience)"/>
+<rect y="150" width="400" height="150" fill="url(#neuf)"/>
+<path d="M0 150h400" stroke="#2C2A28" stroke-width="3"/>
+<rect x="250" y="70" width="90" height="80" rx="4" fill="#fff" stroke="#2C2A28" stroke-width="2"/>
+<rect x="270" y="58" width="50" height="10" rx="3" fill="#2C2A28"/>
+</svg>
+      <div class="poignee"></div>
+      <div class="etiquettes"><span>Avant</span><span>Après</span></div>
+      <input type="range" min="0" max="100" value="50" aria-label="Comparer avant et après">
+    </div>
+  </div>
+</section>
+
+<section class="calcul section-dessinee" id="calcul">
+  <svg class="dessin cache-mobile" style="width:170px;bottom:26px;right:30px"><use href="#dessin-peigne"/></svg>
+  <div class="conteneur">
+    <div>
+      <p class="surtitre">Avant d'acheter votre carrelage</p>
+      <h2>Combien de m² commander&nbsp;?</h2>
+      <p style="color:#d6cec4">On commande toujours un peu plus que la surface de la pièce, pour les coupes et la casse. Entrez les dimensions, le calcul se fait tout seul.</p>
+      <form class="formulaire-calcul" onsubmit="return false">
+        <label>Longueur (m)<input id="longueur" type="number" min="0" step="0.01" value="3.2" inputmode="decimal"></label>
+        <label>Largeur (m)<input id="largeur" type="number" min="0" step="0.01" value="2.5" inputmode="decimal"></label>
+        <label class="pleine">Format du carreau
+          <select id="format">
+            <option value="0.09">30 × 30 cm</option>
+            <option value="0.18">30 × 60 cm</option>
+            <option value="0.36" selected>60 × 60 cm</option>
+            <option value="0.72">60 × 120 cm</option>
+            <option value="0.24">20 × 120 cm (imitation parquet)</option>
+          </select></label>
+        <label class="pleine">Type de pose
+          <select id="pose">
+            <option value="0.10">Pose droite (+10 %)</option>
+            <option value="0.15">Pose en diagonale (+15 %)</option>
+            <option value="0.15">Pose décalée (+15 %)</option>
+          </select></label>
+      </form>
+    </div>
+    <div class="resultat" aria-live="polite">
+      <div>Surface de la pièce : <b id="surface">8,00 m²</b></div>
+      <div style="margin-top:14px">À commander</div>
+      <div class="gros" id="a-commander">8,8 m²</div>
+      <p id="nb-carreaux">soit environ 25 carreaux</p>
+      <small>Estimation indicative. La surface exacte se confirme sur place lors du devis.</small>
+    </div>
+    <div class="argument pleine" style="grid-column:1/-1"><b>Un petit outil utile, ça fait revenir les gens.</b> Le client qui prépare son achat de carrelage passe sur votre site, fait son calcul… et a votre numéro sous les yeux au moment où il cherche un poseur.</div>
+  </div>
+</section>
+
+<section class="deroule section-dessinee">
+  <svg class="dessin cache-mobile" style="width:60px;top:40px;right:12%"><use href="#dessin-croisillon"/></svg>
+  <div class="conteneur">
+    <p class="surtitre">Comment ça se passe</p>
+    <h2>De l'appel à la pose</h2>
+    <ol class="etapes">
+      <li><h3>On s'appelle</h3><p>Vous m'expliquez la pièce, la surface, le carrelage que vous avez en tête.</p></li>
+      <li><h3>Je viens voir</h3><p>Je mesure, je regarde le support, et je vous envoie un devis détaillé.</p></li>
+      <li><h3>Je pose</h3><p>À la date convenue. Joints, finitions, et la pièce est rendue propre.</p></li>
+    </ol>
+    <div class="argument"><b>Rassurer avant le premier appel.</b> Beaucoup de gens hésitent à appeler un artisan qu'ils ne connaissent pas. Savoir comment ça se déroule enlève ce frein. On adaptera les étapes à votre façon de travailler.</div>
+  </div>
+</section>
+
+</main>
+
+<section class="faq" id="faq"><div class="conteneur">
+  <div class="revele"><p class="surtitre">Questions fréquentes</p><h2>Avant de vous lancer</h2><div class="argument"><b>Les questions que vos clients posent toujours.</b> Y répondre ici rassure, et Google adore ce genre de contenu : c'est ce qui sort quand quelqu'un tape sa question.</div></div>
+  <div class="faq-liste revele"><details><summary>Peut-on poser du carrelage sur un ancien carrelage ?</summary><p>Souvent oui, si l'ancien est bien collé, plan et sans fissure. Je le vérifie sur place : si ce n'est pas le cas, on le dépose pour repartir sur un support sain.</p></details><details><summary>Combien de temps dure un chantier ?</summary><p>Tout dépend de la surface et de l'état du support. Une petite salle de bain se fait en quelques jours. Le délai prévu est indiqué noir sur blanc dans le devis.</p></details><details><summary>Dois-je acheter le carrelage moi-même ?</summary><p>Comme vous préférez. Vous pouvez le choisir en magasin, ou me demander conseil sur le format et la quantité avant d'acheter. On en parle au moment du devis.</p></details><details><summary>Quand pourra-t-on marcher dessus ?</summary><p>En général un à deux jours après la pose, le temps que la colle et les joints sèchent. Je vous donne le délai exact selon les produits utilisés.</p></details></div>
+</div></section><section class="devis" id="contact"><div class="conteneur">
+  <div class="revele">
+    <p class="surtitre">Contact</p>
+    <h2>Parlons de votre projet de carrelage</h2>
+    <p class="intro">Décrivez-moi la pièce et la surface. Je vous rappelle pour passer voir et vous envoyer un devis détaillé.</p>
+    <ul class="coordonnees"><li><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg><div><small>Téléphone</small><span class="a-completer">Votre numéro ici</span></div></li><li><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4.5 4.5-7 8-7s7 2.5 8 7"/></svg><div><small>Artisan</small>Alpha Barrie</div></li><li><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><div><small>Secteur</small>Angers et alentours</div></li></ul>
+    <div class="argument"><b>Le formulaire travaille pour vous, même le soir et le dimanche.</b> Le client remplit sa demande quand il y pense, vous la recevez par mail, et vous rappelez une fois votre chantier terminé.</div>
+  </div>
+  <div class="formulaire revele" id="formulaire-devis">
+    <form>
+      <h3>Demande de devis</h3>
+      <p class="sous-titre">Sans engagement. Je vous recontacte pour en parler.</p>
+      <div class="formulaire-grille">
+        <label>Nom<input name="nom" autocomplete="name" placeholder="Votre nom" required></label>
+        <label>Téléphone<input name="telephone" type="tel" autocomplete="tel" placeholder="06 12 34 56 78" required></label>
+        <label>Ville<input name="ville" value="Angers" autocomplete="address-level2"></label>
+        <label>Type de travaux<select name="travaux"><option>Carrelage au sol</option><option>Faïence murale, salle de bain</option><option>Rénovation d&#x27;un carrelage existant</option><option>Autre</option></select></label>
+        <label class="pleine">Votre projet<textarea name="message" placeholder="Surface, pièce concernée, délai souhaité…"></textarea></label>
+      </div>
+      <button class="bouton-envoyer" type="submit">Envoyer ma demande →</button>
+      <p class="mention-form">Vos coordonnées servent uniquement à vous recontacter au sujet de votre demande.</p>
+    </form>
+    <div class="confirmation" role="status"><div class="coche">✓</div><h3>Merci, c'est envoyé !</h3>
+      <p>Ici, c'est une démonstration : une fois le site en ligne, cette demande arrivera directement dans la boîte mail de ALCARRELLAGE.</p></div>
+  </div>
+</div></section>
+<section class="offre-mj" aria-label="Proposition MJ Solution Informatique"><div class="conteneur-mj">
+  <div>
+    <span class="etiquette">Maquette réalisée pour vous</span>
+    <h2>Ce site peut être le vôtre, en ligne d'ici quelques jours.</h2>
+    <p>Bonjour, nous sommes Théo et Kelly, de MJ Solution Informatique à Angers. Nous avons préparé cette maquette pour ALCARRELLAGE, sans engagement de votre part.</p>
+    <p>On l'ajuste ensemble avec vos photos de chantier, votre numéro et vos prestations exactes, puis nous la mettons en ligne.</p>
+    <div class="actions">
+      <a class="principal" href="tel:+33761818353">📞 Nous appeler · 07 61 81 83 53</a>
+      <a class="secondaire" href="mailto:contact@mjinformatique.fr?subject=Site%20internet%20pour%20ALCARRELLAGE">✉️ Écrire un e-mail</a>
+    </div>
+    <div class="signature"><span>MJ</span><span>Théo et Kelly · MJ Solution Informatique, Angers<br>contact@mjinformatique.fr</span></div>
+  </div>
+  <ul class="inclus">
+    <li><span>Votre propre adresse, par exemple <b>alcarrellage.fr</b>, enregistrée à votre nom</span></li>
+    <li><span>Un site lisible sur téléphone, tablette et ordinateur</span></li>
+    <li><span>Pensé pour être trouvé sur Google quand on cherche votre métier à Angers</span></li>
+    <li><span>Votre numéro cliquable et un formulaire de devis qui arrive dans vos mails</span></li>
+    <li><span>Vous restez propriétaire du site</span></li>
+    <li><span>Des modifications ponctuelles quand vous en avez besoin</span></li>
+  </ul>
+</div></section>
+<footer class="pied"><div class="conteneur">
+  <div class="pied-grille">
+    <div><p class="nom-pied">ALCARRELLAGE</p><p>Pose de carrelage neuf et rénovation, sols et murs, à Angers et alentours.</p></div>
+    <div><h4>Navigation</h4><ul><li><a href="#prestations">Prestations</a></li><li><a href="#realisations">Réalisations</a></li><li><a href="#calcul">Calculer ma surface</a></li><li><a href="#contact">Demander un devis</a></li></ul></div>
+    <div><h4>Contact</h4><ul><li>Alpha Barrie, carreleur</li><li>Angers (49)</li><li><span class="a-completer">Votre numéro ici</span></li></ul></div>
+  </div>
+  <div class="pied-bas"><span>© <span class="annee"></span> ALCARRELLAGE · SIRET 108 153 800 00017</span><span><a href="#haut">Mentions légales</a> · Site réalisé par <a href="mailto:contact@mjinformatique.fr">MJ Solution Informatique</a>, Angers</span></div>
+</div></footer>
+<div class="barre-mobile"><a class="appel" href="#contact"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>Appeler</a><a class="devis-lien" href="#formulaire-devis"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 12h6M10 16h6"/></svg>Devis</a></div>
+<script>
+// Bouton « Pourquoi ce site ? » : affiche ou masque les arguments
+(function(){
+  const bouton=document.querySelector('.bouton-pourquoi');
+  if(bouton)bouton.addEventListener('click',()=>{
+    const actif=document.body.classList.toggle('mode-presentation');
+    bouton.textContent=actif?'Masquer les explications':'Pourquoi ce site ?';
+    bouton.setAttribute('aria-pressed',actif);
+    if(actif){const premier=document.querySelector('.argument');if(premier)premier.scrollIntoView({behavior:'smooth',block:'center'});}
+  });
+  document.querySelectorAll('.annee').forEach(e=>e.textContent=new Date().getFullYear());
+
+  // Apparition douce des blocs au défilement
+  const aReveler=document.querySelectorAll('.revele');
+  if('IntersectionObserver' in window){
+    const observateur=new IntersectionObserver(entrees=>entrees.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vu');observateur.unobserve(e.target);}}),{rootMargin:'0px 0px -8% 0px'});
+    aReveler.forEach(el=>observateur.observe(el));
+  } else aReveler.forEach(el=>el.classList.add('vu'));
+
+  // Formulaire de devis (démo : rien n'est envoyé)
+  const formulaire=document.querySelector('.formulaire form');
+  if(formulaire)formulaire.addEventListener('submit',e=>{
+    e.preventDefault();
+    const prenom=(formulaire.querySelector('[name=nom]').value||'').trim().split(' ')[0];
+    document.querySelector('.confirmation h3').textContent=prenom?'Merci '+prenom+', c\'est envoyé !':'Merci, c\'est envoyé !';
+    formulaire.closest('.formulaire').classList.add('envoye');
+  });
+})();
+
+
+// Comparateur avant / après
+const comparateur=document.getElementById('comparateur');
+comparateur.querySelector('input').addEventListener('input',e=>comparateur.style.setProperty('--coupe',e.target.value+'%'));
+
+// Calculateur de surface
+const champs=['longueur','largeur','format','pose'].map(id=>document.getElementById(id));
+const nombreFr=(n,d=1)=>n.toLocaleString('fr-FR',{minimumFractionDigits:d,maximumFractionDigits:d});
+function calculer(){
+  const [longueur,largeur,format,pose]=champs.map(c=>parseFloat(String(c.value).replace(',','.'))||0);
+  const surface=longueur*largeur;
+  const aCommander=Math.ceil(surface*(1+pose)*10)/10;
+  const carreaux=format>0?Math.ceil(aCommander/format):0;
+  document.getElementById('surface').textContent=nombreFr(surface,2)+' m²';
+  document.getElementById('a-commander').textContent=nombreFr(aCommander)+' m²';
+  document.getElementById('nb-carreaux').textContent=surface>0?'soit environ '+carreaux+' carreaux':'Entrez les dimensions de la pièce';
+}
+champs.forEach(c=>c.addEventListener('input',calculer));
+calculer();
+</script>
+</body>
+</html>
